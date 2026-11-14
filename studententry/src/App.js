@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 
-const GRADES = Array.from({ length: 12 }, (_, i) => `Class ${i + 1}`);
+const GRADES = Array.from({ length: 12 }, (_, i) => i + 1);
 const EMPTY_FORM = { name: "", age: "", grade: "" };
 
 function validate({ name, age, grade }) {
@@ -106,8 +106,8 @@ export default function App() {
             className={errors.grade ? "invalid" : ""}
           >
             <option value="">Select grade</option>
-            {GRADES.map((g) => (
-              <option key={g} value={g}>{g}</option>
+            {GRADES.map((grade) => (
+              <option key={grade} value={grade}>{`Class ${grade}`}</option>
             ))}
           </select>
           <span className="err" role="alert">{errors.grade}</span>
@@ -142,7 +142,7 @@ export default function App() {
                   <tr key={s.id}>
                     <td>{s.name}</td>
                     <td>{s.age}</td>
-                    <td>{s.grade}</td>
+                    <td>{`Class ${s.grade}`}</td>
                     <td>
                       <button
                         type="button"
